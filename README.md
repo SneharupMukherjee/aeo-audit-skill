@@ -4,7 +4,9 @@ An agent skill for Claude Code, Codex and other coding agents. It audits how Cha
 
 ## Demo
 
-https://github.com/SneharupMukherjee/aeo-audit-skill/raw/main/media/demo.mp4
+[![demo](media/preview.gif)](https://github.com/SneharupMukherjee/aeo-audit-skill/raw/main/media/demo.mp4)
+
+click the preview for the full video with sound.
 
 ## Steps
 
