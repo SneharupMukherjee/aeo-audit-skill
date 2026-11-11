@@ -41,41 +41,41 @@ AEO audits and optimizes how AI engines (such as ChatGPT, Gemini, Perplexity, an
 
 ```mermaid
 flowchart TD
-    subgraph S1[Step 1: Customer Question Discovery]
-        Seeds[Product & Industry Seeds] --> SERanking_KW[SE Ranking: Keywords Ideas & Volume]
-        SERanking_KW --> DataForSEO_Intent[DataForSEO: Search Intent Live]
-        DataForSEO_Intent --> DFS_PAA[DataForSEO / Google SERP: People Also Ask]
-        DFS_PAA --> TopQuestions[Top High-Intent Buyer Questions]
+    subgraph S1["Step 1: Customer Question Discovery"]
+        Seeds["Product & Industry Seeds"] --> SERanking_KW["SE Ranking: Keywords Ideas & Volume"]
+        SERanking_KW --> DataForSEO_Intent["DataForSEO: Search Intent Live"]
+        DataForSEO_Intent --> DFS_PAA["DataForSEO / Google SERP: People Also Ask"]
+        DFS_PAA --> TopQuestions["Top High-Intent Buyer Questions"]
     end
 
-    subgraph S2[Step 2: AI Engine Recommendation Audits]
-        TopQuestions --> Cloro_ChatGPT[Cloro: ChatGPT Search]
-        TopQuestions --> Cloro_Gemini[Cloro: Gemini Search]
-        TopQuestions --> Cloro_AIMode[Cloro: Google AI Mode SERP]
-        TopQuestions --> DFS_Perplexity[DataForSEO: Perplexity LLM Live]
-        Cloro_ChatGPT --> AI_Aggregator[Visibility & Citation Aggregator]
+    subgraph S2["Step 2: AI Engine Recommendation Audits"]
+        TopQuestions --> Cloro_ChatGPT["Cloro: ChatGPT Search"]
+        TopQuestions --> Cloro_Gemini["Cloro: Gemini Search"]
+        TopQuestions --> Cloro_AIMode["Cloro: Google AI Mode SERP"]
+        TopQuestions --> DFS_Perplexity["DataForSEO: Perplexity LLM Live"]
+        Cloro_ChatGPT --> AI_Aggregator["Visibility & Citation Aggregator"]
         Cloro_Gemini --> AI_Aggregator
         Cloro_AIMode --> AI_Aggregator
         DFS_Perplexity --> AI_Aggregator
     end
 
-    subgraph S3[Step 3: Source Reverse Engineering]
-        AI_Aggregator --> CitedDomains[Unique Cited Domains & URLs]
-        CitedDomains --> SERanking_Backlinks[SE Ranking / Moz: Authority Metrics]
-        CitedDomains --> WebExtractor[Headless Web Extractor / Crawler]
-        SERanking_Backlinks --> OppRanker[Opportunity Score Matrix]
+    subgraph S3["Step 3: Source Reverse Engineering"]
+        AI_Aggregator --> CitedDomains["Unique Cited Domains & URLs"]
+        CitedDomains --> SERanking_Backlinks["SE Ranking / Moz: Authority Metrics"]
+        CitedDomains --> WebExtractor["Headless Web Extractor / Crawler"]
+        SERanking_Backlinks --> OppRanker["Opportunity Score Matrix"]
         WebExtractor --> OppRanker
     end
 
-    subgraph S4[Step 4: Creator Discovery & Action Execution]
-        OppRanker --> HighPriorityTargets[Top Priority Outreach Targets]
-        HighPriorityTargets --> ScrapeCreators_Reddit[ScrapeCreators: Reddit Post Search]
-        HighPriorityTargets --> YT_API[YouTube Data API v3: Video & Creator Search]
-        HighPriorityTargets --> OutreachDrafts[Direct Pitches, Forum Answers & Owned Content]
+    subgraph S4["Step 4: Creator Discovery & Action Execution"]
+        OppRanker --> HighPriorityTargets["Top Priority Outreach Targets"]
+        HighPriorityTargets --> ScrapeCreators_Reddit["ScrapeCreators: Reddit Post Search"]
+        HighPriorityTargets --> YT_API["YouTube Data API v3: Video & Creator Search"]
+        HighPriorityTargets --> OutreachDrafts["Direct Pitches, Forum Answers & Owned Content"]
     end
 
-    subgraph S5[Step 5: Delta Audit & Movement Measurement]
-        OutreachDrafts -.->|3 to 4 Weeks Post-Execution| DeltaAudit[Re-run S2 Baseline vs Current]
+    subgraph S5["Step 5: Delta Audit & Movement Measurement"]
+        OutreachDrafts -.->|"3 to 4 Weeks Post-Execution"| DeltaAudit["Re-run S2 Baseline vs Current"]
     end
 ```
 
@@ -288,7 +288,7 @@ Gate 8: Present prioritized action schedule with impact meters and direct drafts
 2. **Implementation Gate (Gate 9)**: Confirm which outreach actions were marked `Done`, `Partial`, or `Not Done`. Check elapsed days ($<21\text{ days}$ triggers premature warning).
 3. **Noise Floor Estimation**:
    - Execute 3 repeated runs of Question 1 across all 4 engines.
-   - Calculate engine variance: $\text{Noise} = \operatorname{mean}(\max(\text{VS}) - \min(\text{VS}))$.
+   - Calculate engine variance: $\text{Noise} = \mathrm{mean}(\max(\text{VS}) - \min(\text{VS}))$.
    - Any metric delta where $|\Delta| \le \text{Noise}$ is labeled "Within Chance Variation".
 4. **Attribution & Movement (Gate 10)**:
    - Identify **Gained Answers** (queries flipping from unmentioned to mentioned).
